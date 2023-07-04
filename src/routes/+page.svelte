@@ -2,6 +2,7 @@
 	import { onDestroy } from 'svelte';
 	import TimeInput from '../lib/components/TimeInputModal.svelte';
 	import { notes } from '../lib/store';
+	import { notes2 } from '../lib/store';
 	import Textarea from '$lib/components/Textarea.svelte';
 
 	const pauseBetweenBells_ms = 1000;
@@ -81,27 +82,20 @@
 </script>
 
 <div class="container mx-auto">
-	<h1 class="text-4xl font-bold mb-4">my time</h1>
+	<h1 class="text-4xl font-bold m-4">my time</h1>
 
-	<!-- textarea -->
-	<div class="mb-4">
-		<textarea
-			class="w-full h-32 border border-gray-300 rounded p-2 bg-gray-100"
-			placeholder="What are you working on?"
-			bind:value={$notes}
-		/>
-	</div>
+	<Textarea placeholder="What are you working on?" bind:value={$notes} />
 
-	<Textarea />
+	<Textarea bind:value={$notes2} />
 
-	<div class="text-2xl font-bold">
+	<div class="text-2xl font-bold m-4">
 		{timeRemainingFormatted}
 	</div>
 
 	<div>
 		<button
 			on:click={() => (showTimeInput = true)}
-			class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+			class="m-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
 		>
 			Start
 		</button>
